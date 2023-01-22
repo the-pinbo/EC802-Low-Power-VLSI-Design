@@ -1,0 +1,29 @@
+*** V_TC of NAND2 gate 
+.include t14y_tsmc_025_level3.txt
+
+*** netlist
+** pup
+mp_a vdd v_a v_out vdd cmosp l=1u w=10u
+mp_b vdd v_b v_out vdd cmosp l=1u w=10u
+** pdn
+mp_a v_out v_a v_int 0 cmosn l=1u w=5u
+mp_b v_int v_b 0 0 cmosn l=1u w=5u
+** paracitic
+C_out v_out 0 11.80fF
+C_int v_int 0 14.87fF
+
+
+*** input voltage
+vdd vdd 0 5
+v_a v_a 0 pulse(0 5 0 0.1n 0.1n 30n 60n)
+v_b v_b 0 pulse(0 5 0 0.1n 0.1n 15n 30n)
+
+
+*** Simulation 
+.control
+	tran 0.01 62n
+	setplot tran1
+	plot v_a v_b v_out
+.endc
+
+.end
