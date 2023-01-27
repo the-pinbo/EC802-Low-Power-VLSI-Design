@@ -1,0 +1,22 @@
+*** inverter i_sc
+
+.include ./t14y_tsmc_025_level3.txt
+
+*** netlist
+mu vdd vin vout vdd cmosp l = 1u w = 25u
+md vout vin 0 0 cmosn l = 1u w = 10u
+
+vdd vdd 0 5
+vin vin 0 PULSE(0 5 0 0 0 1n 2n)
+
+*** paracitic
+C_l vout 0 200fF
+
+.control
+    tran .0001n 2n
+    plot vin vout title "Input a"
+    plot i(vdd) title "Short circuit current"
+    wrdata output/2/data.txt v(vout) v(vin) i(vdd)
+.endc
+
+.end

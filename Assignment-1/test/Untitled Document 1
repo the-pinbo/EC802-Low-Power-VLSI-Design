@@ -1,0 +1,7 @@
+	*tran2
+	tran .1n 5n uic
+	run 
+	print tran2
+	reset
+	
+	tran2.v(1)
