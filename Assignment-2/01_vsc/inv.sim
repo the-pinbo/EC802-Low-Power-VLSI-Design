@@ -14,9 +14,11 @@ C_l vout 0 200fF
 
 .control
     tran .0001n 2n
-    plot vin vout title "Input a"
-    plot i(vdd) title "Short circuit current"
-    wrdata output/2/data.txt v(vout) v(vin) i(vdd)
+    plot -vdd#branch  title "Short circuit current"
+    plot -vin#branch  title "Short circuit current"
+    plot -vout#branch  title "Short circuit current"
+    plot v(vout) v(vin) title "Short circuit current"
+    wrdata output/2/data.txt v(vout) v(vin)  
 .endc
 
 .end
