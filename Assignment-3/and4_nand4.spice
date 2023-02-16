@@ -49,9 +49,9 @@ vd d 0 dc pulse(0 VMAX 0 0.01n 0.01n 16n 32n)
         let dpower=@cout[capacitance]*vdd*vdd
 
         print tp spower dpower
-        plot out a b c d 
-
-        wrdata output/250/3v/data.txt out a b c d tp spower dpower tfall trise
+        *plot out a b c d 
+        
+        wrdata output/250/3v/data_250.txt out a b c d tp spower dpower tfall trise
 .endc
 .end
 
