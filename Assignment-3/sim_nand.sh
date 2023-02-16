@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the list of replacement values
-replacements=(4 5 6 7 8 9)
+replacements=(3 4 5 6 7 8 9)
 
 # Loop through the replacement values and replace them in the file
 for r in "${replacements[@]}"
