@@ -122,4 +122,3 @@
 +Xpart= 1                      cgsl= 0.582E-10                    cgdl= 0.582E-10
 +ckappa= 0.28                  cf= 1.177e-10                      clc= 5.4750000E-08 
 +cle= 6.4600000                Dlc= 2E-08                         Dwc= 0
-

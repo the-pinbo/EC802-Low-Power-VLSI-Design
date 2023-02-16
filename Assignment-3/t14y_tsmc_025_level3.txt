@@ -3,7 +3,7 @@
 * LOT: T14Y                  WAF: 03                                            
 * DIE: N_Area_Fring          DEV: N3740/10                                      
 * Temp= 27                                                                      
-.MODEL CMOSN NMOS (                                 LEVEL  = 3                  
+.MODEL NMOS NMOS (                                 LEVEL  = 3                  
 + TOX    = 5.7E-9          NSUB   = 1E17            GAMMA  = 0.4317311          
 + PHI    = 0.7             VTO    = 0.4238252       DELTA  = 0                  
 + UO     = 425.6466519     ETA    = 0               THETA  = 0.1754054          
@@ -14,7 +14,7 @@
 + CJ     = 1.81211E-3      PB     = 0.5             MJ     = 0.3282553          
 + CJSW   = 5.341337E-10    MJSW   = 0.5             )                           
 
-.MODEL CMOSP PMOS (                                 LEVEL  = 3                  
+.MODEL PMOS PMOS (                                 LEVEL  = 3                  
 + TOX    = 5.7E-9          NSUB   = 1E17            GAMMA  = 0.6348369          
 + PHI    = 0.7             VTO    = -0.5536085      DELTA  = 0                  
 + UO     = 250             ETA    = 0               THETA  = 0.1573195          
