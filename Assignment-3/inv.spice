@@ -1,0 +1,58 @@
+*assignment3 NAND4
+.include ./t14y_tsmc_025_level3.txt
+
+mpa x a vdd vdd pmos l=1u w=4u
+mpb x b vdd vdd pmos l=1u w=4u
+mpc x c vdd vdd pmos l=1u w=4u
+mpd x d vdd vdd pmos l=1u w=4u
+
+
+mna x a x1 0 nmos l=1u w=2u
+mnb x1 b x2 0 nmos l=1u w=2u
+mnc x2 c x3 0 nmos l=1u w=2u
+mnd x3 d 0 0 nmos l=1u w=2u
+
+mpx out x vdd vdd pmos l=1u w=4u
+mnx out x 0 0 nmos l=1u w=2u
+
+.param C_OUT = 15f
+.param VMAX = 3v
+
+
+cout out 0 C_OUT
+
+vdd vdd 0 dc VMAX
+va a 0 dc pulse(0 VMAX 0 0.01n 0.01n 2n 4n)
+vb b 0 dc pulse(0 VMAX 0 0.01n 0.01n 4n 8n)
+vc c 0 dc pulse(0 VMAX 0 0.01n 0.01n 8n 16n)
+vd d 0 dc pulse(0 VMAX 0 0.01n 0.01n 16n 32n)
+
+.control
+    * foreach vdd .01f .1f 1f
+        tran 0.001 32n 
+        
+        * trise measurement 
+        meas tran trise trig out val=0.1*VMAX rise=1 targ out val=0.9*VMAX rise=1
+        * tfall measurement
+        meas tran tfall trig out val=0.9*VMAX fall=1 targ out val=0.1*VMAX fall=1
+        * high to low time 
+        meas tran tphl trig a val=.5*VMAX rise=1 targ out val=0.5*VMAX fall=1
+        * low to high time 
+        meas tran tplh trig a val=.5*VMAX fall=1 targ out val=0.5*VMAX fall=1
+        * propagation delay
+        let tp=0.5*(tphl+tplh)
+        * power calculation
+        let power_vec=vdd*vdd#branch
+        * static power
+        meas tran spower AVG power_vec from=0 to=32n
+        * dynamic power 
+        let dpower=@cout[capacitance]*vdd*vdd
+
+        print tp spower dpower
+        *plot out a b c d 
+        
+        wrdata output/250/3v/and4_nand4 out a b c d tp spower dpower tfall trise
+.endc
+.end
+
+

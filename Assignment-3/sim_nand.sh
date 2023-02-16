@@ -10,11 +10,11 @@ do
   rv="$r""v"
 
   # Replace the value in the file
-  sed -i "s/3v/$rv/g" and4_nand_nor.sim
+  sed -i "s/3v/$rv/g" nor1.sim
 
   # Run ngspice with the modified file
-  ngspice -b and4_nand_nor.sim
+  ngspice -b nor1.sim
 
   # Revert the change in the file
-  sed -i "s/$rv/3v/g" and4_nand_nor.sim
+  sed -i "s/$rv/3v/g" nor1.sim
 done
