@@ -1,5 +1,5 @@
 *assignment3 NAND4
-.include ./t14y_tsmc_025_level3.txt
+.include ./t14y_tsmc_009_level3.txt
 
 mpa x a vdd vdd pmos l=1u w=4u
 mpb x b vdd vdd pmos l=1u w=4u
